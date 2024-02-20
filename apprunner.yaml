@@ -2,25 +2,7 @@ version: 1.0
 runtime: python3
 build:
   commands:
-    pre-build:
-      # Adicione comandos necessários antes da construção, se houver
     build:
       - pip install -r requirements.txt
-    post-build:
-      # Comandos a serem executados após a construção, como testes unitários
-      - echo "Post-build step"  # Exemplo, substitua por comandos reais conforme necessário
-  env:
-    - name: FLASK_ENV
-      value: "production"
 run:
-  runtime-version: 3  # Especifica a versão do runtime Python; ajuste conforme a base do seu contêiner
-  command: "flask run --host=0.0.0.0"  # Comando para iniciar a aplicação Flask
-  network: 
-    port: 5000  # A porta em que a aplicação Flask está configurada para rodar
-  env:
-    - name: MY_VAR_EXAMPLE
-      value: "example"
-  secrets:
-    - name: my-secret
-      value-from: "arn:aws:secretsmanager:us-east-1:123456789012:secret:testingstackAppRunnerConstr-kJFXde2ULKbT-S7t8xR:username::"
-    # Adicione mais variáveis de ambiente ou segredos conforme necessário
+  command: python server.py
