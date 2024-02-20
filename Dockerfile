@@ -1,17 +1,20 @@
-# Use a imagem oficial do Python 3.8 como base
-FROM python:3
+# Use a specific version of Python as a base image
+FROM python:3.8
 
-# Defina o diretório de trabalho dentro do contêiner
+# Set the working directory in the container
 WORKDIR /app
 
-# Copie todos os arquivos do diretório atual para o diretório de trabalho no contêiner
+# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Instale as dependências necessárias para o seu chatbot
-RUN pip install --no-cache-dir tensorflow torch transformers flask
+# Install any needed packages specified in requirements.txt
+RUN pip install tensorflow torch transformers flask
 
-# Exponha a porta 5000 para a aplicação Flask
+# Make port 5000 available to the world outside this container
 EXPOSE 5000
 
-# Defina o comando padrão para executar o aplicativo
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
 CMD ["python", "app.py"]
