@@ -1,0 +1,13 @@
+version: 1.0
+runtime: python3.8
+build:
+  commands:
+    pre_build:
+      - echo "Instalando dependências"
+      - pip install -r requirements.txt
+    build:
+      - echo "Construindo a aplicação"
+deploy:
+  commands:
+    start:
+      - python app.py
