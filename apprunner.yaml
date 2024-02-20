@@ -1,14 +1,13 @@
 version: 1.0
 runtime: python3.8
 build:
-  build_command: pip install -r requirements.txt
-  environment_variables:
-    - name: FLASK_ENV
-      value: production
-deployment:
-  command: "python app.py"
-  ports:
-    - 5000
-  environment_variables:
-    - name: FLASK_APP
-      value: app.py
+  commands:
+    - pip install -r requirements.txt
+environment:
+  variables:
+    FLASK_ENV: production
+source:
+  image:
+    repository: https://github.com/gabbvex/chatbot
+    tag: latest
+    port: 5000
