@@ -1,4 +1,1 @@
-tensorflow
-torch
-transformers
-flask
+pyramid==2.0
