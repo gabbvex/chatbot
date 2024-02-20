@@ -18,3 +18,15 @@ if __name__ == '__main__':
         app = config.make_wsgi_app()
     server = make_server('0.0.0.0', port, app)
     server.serve_forever()
+
+from flask import Flask
+import sys
+
+app = Flask(__name__)
+
+@app.route('/python-version')
+def python_version():
+    return "Python version: " + sys.version
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80)
